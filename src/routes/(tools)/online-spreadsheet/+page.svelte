@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Intro from '$lib/Intro.svelte';
-	import { Button, GradientButton } from 'flowbite-svelte';
+	import { Button, GradientButton, ButtonGroup} from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	
 	import { Grid } from 'ag-grid-community';
@@ -13,7 +13,7 @@
 	let grid: Grid;
 	
 	const gridOptions: GridOptions = {
-			columnDefs: [ { field: "ID", editable: false},
+			columnDefs: [ { field: "ID", editable: false, pinned: "left", sortable: false, filter: false, },
 				{ field: "A" },{ field: "B" },{ field: "C" },{ field: "D" },{ field: "E" },{ field: "F" },{ field: "G" },{ field: "H" },
 				{ field: "I" },{ field: "J" },{ field: "K" },{ field: "L" },{ field: "M" },{ field: "N" },{ field: "O" },{ field: "P" },
 				{ field: "Q" },{ field: "R" },{ field: "S" },{ field: "T" },{ field: "U" },{ field: "V" },{ field: "W" },{ field: "X" },
@@ -37,7 +37,8 @@
 				{ ID:8, A:"", B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:"", S:"", T:"", U:"", V:"", W:"", X:"", Y:"", Z:"",},
 				{ ID:9, A:"", B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:"", S:"", T:"", U:"", V:"", W:"", X:"", Y:"", Z:"",},
 				{ ID:10, A:"", B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:"", S:"", T:"", U:"", V:"", W:"", X:"", Y:"", Z:"",},
-			]
+			],
+			animateRows: true,
 		}
 		
 	onMount(() => {
@@ -62,16 +63,25 @@
 			add: [newRow],
 			addIndex: rowCount
 		})
-	}
+	};
+
+	function downloadCSV() {
+		gridOptions.api!.exportDataAsCsv();
+	};
 
 </script>
 
 <Intro heading={data.meta.title} description={data.meta.description} />
 
 <section class="bg-white dark:bg-gray-900">
+	<div class="flex justify-center items-center">
+		<ButtonGroup>
+			<GradientButton on:click={addRow} color="blue">Add Row</GradientButton>
+			<GradientButton on:click={downloadCSV} color="blue">Download CSV</GradientButton>
+		</ButtonGroup>
+	</div>
 	<div class="mt-2 flex">
-		<div id="Spreadsheet" style="height:500px; width:100%; margin:4px" class="ag-theme-alpine"/>
-		<GradientButton on:click={addRow} class="w-32 h-32 ml-2 mr-2" size="sm" color="blue">Add Row</GradientButton>
+		<div id="Spreadsheet" style="height:500px; width:100%; margin-left: 20px; margin-right:20px;" class="ag-theme-alpine"/>
 	</div>
 </section>
 
