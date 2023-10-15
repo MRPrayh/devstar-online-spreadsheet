@@ -19,11 +19,12 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "2.0.0",
-		"@sveltejs/kit": "1.7.2",
+		"@sveltejs/adapter-node": "^1.3.1",
+		"@sveltejs/kit": "^1.7.2",
 		"@types/multicoin-address-validator": "^0.5.0",
+		"@types/tabulator-tables": "^5.5.2",
 		"@typescript-eslint/eslint-plugin": "^5.52.0",
 		"@typescript-eslint/parser": "^5.52.0",
-		"ag-grid-community": "^30.2.0",
 		"autoprefixer": "^10.4.13",
 		"eslint": "^8.34.0",
 		"eslint-config-prettier": "^8.6.0",
@@ -62,13 +63,16 @@
 	},
 	"dependencies": {
 		"@bytemd/plugin-gfm": "^1.21.0",
-		"@sveltejs/adapter-node": "^1.3.1",
+		"ag-grid-community": "^30.2.0",
+		"ag-grid-react": "^30.2.0",
 		"bytemd": "^1.21.0",
 		"colorthief": "^2.4.0",
 		"countries-list": "^2.6.1",
+		"handsontable": "^13.1.0",
 		"multicoin-address-validator": "^0.5.12",
 		"qr-code-styling": "^1.6.0-rc.1",
 		"svelte-datepicker": "^1.0.0",
-		"svelte-tags-input": "^5.0.0"
+		"svelte-tags-input": "^5.0.0",
+		"xlsx": "^0.18.5"
 	}
 }
